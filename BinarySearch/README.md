@@ -46,5 +46,9 @@ right is the ending index of the array.<br>
 **Check:** <br>
 If the element at the middle index is the target, return the middle index.<br>
 If the element at the middle index is less than the target, adjust left to middle + 1 to search in the right half.<br>
+
+
+### Condition to Satisfy
+The array should be ordered which means it should be ascending or descending order for it to work
 If the element at the middle index is greater than the target, adjust right to middle - 1 to search in the left half.<br>
 **Not Found:** If the loop ends without finding the target, return -1.<br>
