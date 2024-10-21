@@ -38,13 +38,13 @@ So, each time, you're making your search area smaller and smaller until you find
 
 </pre>
 <b>Explanation:</b><br>
-Initialize:<br>
+**Initialize:** <br/>
 left is the starting index of the array.<br>
 right is the ending index of the array.<br>
-Loop: Continue the loop while left is less than or equal to right.<br>
-Middle: Calculate the middle index.<br>
-Check:<br>
+**Loop:** Continue the loop while left is less than or equal to right.<br>
+**Middle:** Calculate the middle index.<br>
+**Check:** <br>
 If the element at the middle index is the target, return the middle index.<br>
 If the element at the middle index is less than the target, adjust left to middle + 1 to search in the right half.<br>
 If the element at the middle index is greater than the target, adjust right to middle - 1 to search in the left half.<br>
-Not Found: If the loop ends without finding the target, return -1.<br>
+**Not Found:** If the loop ends without finding the target, return -1.<br>
