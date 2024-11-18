@@ -41,3 +41,27 @@ After each pass of the outer loop, the largest element in the unsorted subarray 
     return input;
 }
 </pre>
+In the above code, you use the flag swapped to determine if the values are swapped in the inner loop. If we do not swap then it means the numbers are already sorted and so it exits the loop.
+<pre>
+  public static void bubbleSort_withFlag(Integer[] intArr) {
+        int lastComparison = intArr.length - 1;
+
+        for (int i = 1; i < intArr.length; i++) {
+            boolean isSorted = true;
+            int currentSwap = -1;
+            for (int j = 0; j < lastComparison; j++) {
+                if (intArr[j] < intArr[j + 1]) {
+                    int tmp = intArr[j];
+                    intArr[j] = intArr[j + 1];
+                    intArr[j + 1] = tmp;
+                    isSorted = false;
+                    currentSwap = j;
+                }
+
+            }
+            if (isSorted) return;
+            lastComparison = currentSwap;
+        }
+    } 
+</pre>
+This is adding the lastComparison value where the inner loop skips the comparison of the last element which is already bubbled up and placed in the correct place.
