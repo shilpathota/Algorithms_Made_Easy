@@ -65,3 +65,8 @@ In the above code, you use the flag swapped to determine if the values are swapp
     } 
 </pre>
 This is adding the lastComparison value where the inner loop skips the comparison of the last element which is already bubbled up and placed in the correct place.
+
+Even though we optimize the code, it still has more time complexity and worst case has O(n^2)
+
+
+There are better algorithms that does the job even faster and effecient.
