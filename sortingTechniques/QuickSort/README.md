@@ -60,3 +60,51 @@ In the best case, the algorithm will divide the list into two equal size sub-lis
 In the worst case, the algorithm will select only one element in each iteration, so O(n) + O(n-1) + … + O(1), which is equal to O(n2).
 
 On the average QuickSort has O(n log n) complexity, making it suitable for big data volumes.
+
+
+As you can see the selecting pivot is crucial and the Paritiion algorithm is the key for this Quicksort effectiveness. There are 2 proposals for this
+### Lomuto Partition
+This is the algorithm that is explained above
+<pre>
+  def partition(A,low,high):
+    pivot = high
+    pivot_val=A[pivot]
+    i=low
+    for j in range(low,high):
+      if A[j] <= pivot_val:
+        A[j], A[i] = A[i], A[j]
+        i=i+1
+    A[i],A[pivot] = A[pivot],A[i]
+    return i
+</pre>
+The complexity is O(n) which is the length of the elements
+
+### Hoare Partition
+The next algorithm is Hoare Partition 
+<pre>
+  def partition(A,low,high):
+    pivot_val = A[low]
+    i=low-1
+    j=high+1
+    while True:
+      while True:
+        i+=1
+        if A[i] >= pivot_val:
+          break
+      while True:
+        j-=1
+        if A[j] <= pivot_val:
+          break
+      if i>=j:
+          return j
+      A[i], A[j] = A[j], A[i]
+        
+</pre>
+
+We also have to modify quicksort accordingly
+<pre>
+  quicksort(A,low,pivot) # instead of pivot-1 above
+</pre>
+This also have O(n) where n is the number of elements.
+
+But this method has more errors 
