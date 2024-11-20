@@ -29,5 +29,6 @@ public class Main {
         int[] arra=generateRandomNumbers(90);
         Arrays.sort(arra);
         SelectionSort.selectionSort(arra);
+        SelectionSort.optimizedselectionSort(arra);
     }
 }
