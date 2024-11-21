@@ -55,6 +55,17 @@ Merging elementsAs we can see from the figure above, n comparisons are needed on
 Time complexity can be calculated based on the number of split operations and the number of merge operations:O((n−1)+nlog2n)=O(n⋅log2n)
 The number of splitting operations (n−1) can be removed from the Big O calculation above because n⋅log2n will dominate for large n, and because of how we calculate time complexity for algorithms.
 
+
+
+**Best Case Complexity** - It occurs when there is no sorting required, i.e. the array is already sorted. The best-case time complexity of merge sort is O(n*logn).
+
+
+**Average Case Complexity** - It occurs when the array elements are in jumbled order that is not properly ascending and not properly descending. The average case time complexity of merge sort is O(n*logn).
+
+
+**Worst Case Complexity** - It occurs when the array elements are required to be sorted in reverse order. That means suppose you have to sort the array elements in ascending order, but its elements are in descending order. The worst-case time complexity of merge sort is O(n*logn).
+
+
 The figure below shows how the time increases when running Merge Sort on an array with n values.
 
 **Time Complexity**
