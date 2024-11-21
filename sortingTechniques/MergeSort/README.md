@@ -30,20 +30,31 @@ The number of merges is actually also n−1, the same as the number of splits, b
 During merging of two sub-arrays, the worst case scenario that generates the most comparisons, is if the sub-arrays are equally big. Just consider merging [1,4,6,9] and [2,3,7,8]. In this case the following comparisons are needed:
 
 Comparing 1 and 2, result: [1]
+
 Comparing 4 and 2, result: [1,2]
+
 Comparing 4 and 3, result: [1,2,3]
+
 Comparing 4 and 7, result: [1,2,3,4]
+
 Comparing 6 and 7, result: [1,2,3,4,6]
+
 Comparing 9 and 7, result: [1,2,3,4,6,7]
+
 Comparing 9 and 8, result: [1,2,3,4,6,7,8]
+
 At the end of the merge, only the value 9 is left in one array, the other array is empty, so no comparison is needed to put the last value in, and the resulting merged array is [1,2,3,4,6,7,8,9]. We see that we need 7 comparisons to merge 8 values (4 values in each of the initial sub-arrays). In general, in a worst case scenario, 
 n−1 comparisons are needed to get a merged array of n values.
+
 For simplicity, let's say that we need n comparisons instead of n−1 when merging n values. This is an ok assumption when n is large and we want to calculate an upper bound using Big O notation.
+
 So, at each level merging happens, n comparisons are needed, but how many levels are there? Well, for n=16 we have n=16=2^4, so 4 levels of merging. For n=32=2^5
  there are 5 levels of merging, and at each level, n comparisons are needed. For n=1024=2^10 10 levels of merging is needed. To find out what power of 2 gives us 1024, we use a base-2 logarithm. The answer is 10. Mathematically it looks like this: log2(1024)=10.
+ 
 Merging elementsAs we can see from the figure above, n comparisons are needed on each level, and there are log2n levels, so there are n⋅log2n comparison operations in total.
 Time complexity can be calculated based on the number of split operations and the number of merge operations:O((n−1)+nlog2n)=O(n⋅log2n)
 The number of splitting operations (n−1) can be removed from the Big O calculation above because n⋅log2n will dominate for large n, and because of how we calculate time complexity for algorithms.
+
 The figure below shows how the time increases when running Merge Sort on an array with n values.
 
 **Time Complexity**
