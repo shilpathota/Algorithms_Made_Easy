@@ -29,3 +29,5 @@ We should design an algorithm such that 
 
 This gives other important parameter which is capacity of the bucket and the number of keys which might be mapped into the same bucket according to the hash function
 We can store the multiple values in a single array in the bucket if Maximum Number of keys in bucket is small but if it is bigger we go for height balanced binary search tree.
+
+[Here is the link to HashMap implemented from scratch using LinkedList](https://github.com/shilpathota/Algorithms_Made_Easy/blob/main/HashMap/HashmapFromScratch.java)
