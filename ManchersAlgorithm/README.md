@@ -1,0 +1,1 @@
+# Mancher's algorithm
