@@ -54,25 +54,91 @@ this is applicable for odd lengths, for even length, we can insert dummy charact
 
 Runtime is O(n)
 
+## Algorithm
 
+### Key Concepts of Manacher's Algorithm
+#### Modified String:
+The input string is modified to handle even-length palindromes. For example, "abababa" is transformed into "#a#b#a#b#a#b#a#" by adding a # between every character and at the start and end. This ensures all palindromes are of odd length in the modified string.
 
+#### Variables Used:
 
+C: Center of the current palindrome.
+R: Right boundary of the current palindrome.
+L[i]: Length of the palindrome centered at position i in the modified string.
+iMirror: The mirror position of i with respect to C.
+#### Purpose of LPS Array (L):
+L[i] stores the radius of the palindrome centered at position i. From this, we can determine the longest palindromic substring.
 
+#### Step-by-Step Execution
+Input: "abababa"
 
+Modified String: "#a#b#a#b#a#b#a#"
 
+#### Initialization:
+C = 0 (Initial center is the first character).
 
+R = 0 (No palindrome boundary initially).
 
+L = [0, 0, 0, 0, ..., 0] (Initialize all palindrome radii to 0).
 
+Iterating through the modified string:
 
+Index 1 (i = 1):
 
+iMirror = 2 * C - i = -1 (No valid mirror position).
 
+Expand the palindrome at i = 1: #a# is a palindrome.
 
+Update L[1] = 1.
 
+Update C = 1 and R = 2 (right boundary expands to 2).
 
+Index 2 (i = 2):
 
+iMirror = 2 * C - i = 0.
 
+No expansion: L[2] = 0.
 
+No changes to C or R.
 
+Index 3 (i = 3):
+
+iMirror = 2 * C - i = 1.
+
+Expand the palindrome at i = 3: #a#b#a# is a palindrome.
+
+Update L[3] = 3.
+
+Update C = 3 and R = 6.
+
+Index 4 (i = 4):
+
+iMirror = 2 * C - i = 2.
+
+Expand: L[4] = 4.
+
+Update C = 4 and R = 8.
+
+Index 5 (i = 5):
+
+iMirror = 3.
+
+Expand: L[5] = 5.
+
+Update C = 5 and R = 10.
+
+Continue similar steps for all positions...
+
+#### Result Extraction:
+The maximum value in L is 7 at index 7 (center position in the modified string).
+
+Convert this back to the original string by identifying the start and end indices.
+
+Longest Palindromic Substring = "abababa"
+
+#### Why This Algorithm is Efficient
+Instead of comparing substrings repeatedly (as in brute-force methods), Manacher's Algorithm cleverly uses symmetry (mirrored palindromes) and boundaries (R) to minimize redundant calculations.
+Time Complexity: 𝑂(𝑁), where  𝑁 is the length of the modified string.
 
 
 
