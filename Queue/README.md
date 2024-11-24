@@ -197,3 +197,5 @@ Circular queues and deques offer optimizations over traditional queues to handle
 ## Priority Queues
  All about priority queue - [Priority Queues](https://github.com/shilpathota/Algorithms_Made_Easy/blob/main/Queue/PriorityQueue.md)
 
+## Circular Queue
+All about Circular Queuw - [Circular Queue](https://github.com/shilpathota/Algorithms_Made_Easy/blob/main/Queue/circularQueue.md)
