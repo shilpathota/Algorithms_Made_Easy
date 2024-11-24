@@ -188,3 +188,8 @@ Queues are simple yet powerful data structures used in various algorithms, such 
 The choice between array-based and linked list-based queues depends on the requirements for memory efficiency and the expected size of the queue.
 
 Circular queues and deques offer optimizations over traditional queues to handle space and time complexity more efficiently.
+
+## My Notes
+
+![IMG_3122](https://github.com/user-attachments/assets/84a2b93c-dd34-42e7-bda8-7b281331961c)
+
