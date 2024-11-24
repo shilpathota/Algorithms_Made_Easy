@@ -14,3 +14,6 @@ A full binary tree is a binary tree with either zero or two child nodes for each
 
 ## Traverse a tree
 Given the root of a binary tree return the preorder traversal of its nodes values
+
+## Types of Binary Tree
+![IMG_3121](https://github.com/user-attachments/assets/81823ad6-c8c5-47f1-a4e6-e66628f58155)
