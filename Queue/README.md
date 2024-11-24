@@ -4,9 +4,13 @@ A queue is a linear data structure that follows the First-In-First-Out (FIFO) pr
 
 ## Basic Operations in a Queue:
 **Enqueue (Insert):** Add an element to the back (tail) of the queue.
+
 **Dequeue (Remove):** Remove an element from the front (head) of the queue.
+
 **Peek/Front:** Get the element at the front without removing it.
+
 **isEmpty:** Check if the queue is empty.
+
 **Size:** Get the number of elements in the queue.
 
 ## Types of Queues
@@ -144,7 +148,7 @@ public class LinkedListQueue {
         return front.data;
     }
 }</pre>
-Time Complexity of Queue Operations
+## Time Complexity of Queue Operations
 #### Enqueue (Insertion):
 
 - Array-based Queue: O(1) if the queue is not full.
