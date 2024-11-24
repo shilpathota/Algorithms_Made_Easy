@@ -141,5 +141,10 @@ Instead of comparing substrings repeatedly (as in brute-force methods), Manacher
 Time Complexity: 𝑂(𝑁), where  𝑁 is the length of the modified string.
 
 
+#### My Notes
+![IMG_3119](https://github.com/user-attachments/assets/860a7d97-61ad-4238-bfc5-9aea224a36c8)
+![IMG_3120](https://github.com/user-attachments/assets/35f3935d-6542-4e1e-bace-5c9999e4637a)
+
+
 
 
