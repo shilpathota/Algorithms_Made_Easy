@@ -17,3 +17,7 @@ Given the root of a binary tree return the preorder traversal of its nodes value
 
 ## Types of Binary Tree
 ![IMG_3121](https://github.com/user-attachments/assets/81823ad6-c8c5-47f1-a4e6-e66628f58155)
+
+
+## Binary Search Tree
+- All about Binary Search Tree - [Binary Search Tree](https://github.com/shilpathota/Algorithms_Made_Easy/blob/main/BinaryTree/BinarySearchTree.md)
