@@ -31,149 +31,124 @@ A **Binary Search Tree (BST)** is a type of binary tree where each node has at m
 ### Binary Search Tree Implementation in Java:
 
 ```java
-class BinarySearchTree {
-    // Node class to define structure of each node
-    class Node {
-        int data;
-        Node left, right;
+package com.hackathon;
 
-        // Constructor to create a new node
-        public Node(int item) {
-            data = item;
-            left = right = null;
-        }
-    }
 
-    // Root node of BST
+public class BST{
     Node root;
-
-    // Constructor for the BST
-    public BinarySearchTree() {
+    public BST(){
         root = null;
     }
-
-    // Insert a node in the BST
-    public void insert(int data) {
+    public static class Node{
+        int data;
+        Node left,right;
+        Node(int data){
+            this.data = data;
+            this.left=this.right=null;
+        }
+    }
+    //insert
+    public void insert(int data){
         root = insertRec(root, data);
     }
-
-    // Recursive function to insert a new node
-    private Node insertRec(Node root, int data) {
-        // If the tree is empty, return a new node
-        if (root == null) {
+    //insertRec
+    public Node insertRec(Node root,int data){
+        if(root == null){
             root = new Node(data);
             return root;
         }
-
-        // Otherwise, recur down the tree
-        if (data < root.data)
-            root.left = insertRec(root.left, data); // Insert in left subtree
-        else if (data > root.data)
-            root.right = insertRec(root.right, data); // Insert in right subtree
-
-        // Return the (unchanged) node pointer
+        if(data < root.data)
+            root.left = insertRec(root.left,data);
+        if(data > root.data)
+            root.right = insertRec(root.right,data);
         return root;
     }
+    //search
+    public Boolean search(int data){
+        if(root == null) return false;
+        return searchRec(root,data);
+    }
+    //searchRec
+    public Boolean searchRec(Node root,int data){
+        if(root.data == data) return true;
+        if(root.data > data)  return searchRec(root.left,data);
+        return searchRec(root.right,data);
 
-    // Search for a node with a given value
-    public boolean search(int data) {
-        return searchRec(root, data);
     }
 
-    // Recursive function to search for a node
-    private boolean searchRec(Node root, int data) {
-        // Base case: root is null or data is present at the root
-        if (root == null)
-            return false;
-        if (root.data == data)
-            return true;
-
-        // Data is greater than root's data, search in right subtree
-        if (data > root.data)
-            return searchRec(root.right, data);
-
-        // Data is smaller than root's data, search in left subtree
-        return searchRec(root.left, data);
-    }
-
-    // Delete a node
-    public void delete(int data) {
-        root = deleteRec(root, data);
-    }
-
-    // Recursive function to delete a node
-    private Node deleteRec(Node root, int data) {
-        // Base case: root is null
-        if (root == null)
-            return root;
-
-        // Otherwise, recur down the tree
-        if (data < root.data)
-            root.left = deleteRec(root.left, data);
-        else if (data > root.data)
-            root.right = deleteRec(root.right, data);
-        else {
-            // Node with only one child or no child
-            if (root.left == null)
-                return root.right;
-            else if (root.right == null)
-                return root.left;
-
-            // Node with two children: Get the inorder successor (smallest in the right subtree)
-            root.data = minValue(root.right);
-
-            // Delete the inorder successor
-            root.right = deleteRec(root.right, root.data);
+    //remove
+    public void remove(int data){
+        if(search(data)){
+            root = removeRec(root,data);
         }
-
+    }
+    //removeRec
+    public Node removeRec(Node root, int data){
+        if(root == null) return root;
+        if(root.data < data)
+            root.right = removeRec(root.right,data);
+        else if ( root.data>data){
+            root.left = removeRec(root.left, data);
+        }
+        else{
+            if(root.left ==null && root.right ==null){
+                root = null;
+            }
+            else if( root.right != null){//find successor
+                root.data = successor(root);
+                root.right = removeRec(root.right,root.data);
+            }
+            else{//find predecessor
+                root.data = predecessor(root);
+                root.left = removeRec(root.left , root.data);
+            }
+        }
         return root;
     }
-
-    // Get the inorder successor (smallest node in the right subtree)
-    private int minValue(Node root) {
-        int minValue = root.data;
-        while (root.left != null) {
-            minValue = root.left.data;
-            root = root.left;
+    public int successor(Node root){
+        root = root.right;
+        while(root.left!=null){
+            root=root.left;
         }
-        return minValue;
+        return root.data;
     }
-
-    // In-order traversal of the tree
-    public void inorder() {
-        inorderRec(root);
-    }
-
-    // Recursive function to perform in-order traversal
-    private void inorderRec(Node root) {
-        if (root != null) {
-            inorderRec(root.left);
-            System.out.print(root.data + " ");
-            inorderRec(root.right);
+    public int predecessor(Node root){
+        root = root.left;
+        while(root.right!=null){
+            root=root.right;
         }
+        return root.data;
     }
-
-    // Main method to test the binary search tree
+    //display
+    public void display(){
+        if(root == null) return;
+        displayRec(root);
+    }
+    //displayRec
+    public void displayRec(Node root){
+        if(root == null) return;
+        displayRec(root.left);
+        System.out.print(root.data + " ");
+        displayRec(root.right);
+    }
     public static void main(String[] args) {
-        BinarySearchTree tree = new BinarySearchTree();
+        BST pq = new BST();
 
-        tree.insert(50);
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(40);
-        tree.insert(70);
-        tree.insert(60);
-        tree.insert(80);
+        // Insert elements into the priority queue
+        pq.insert(20);
+        pq.insert(15);
+        pq.insert(10);
+        pq.insert(5);
+        pq.insert(30);
 
-        System.out.println("In-order traversal:");
-        tree.inorder(); // Output: 20 30 40 50 60 70 80
+        System.out.println("Priority Queue after insertions:");
+        pq.display();
 
-        System.out.println("\n\nSearch for 40: " + tree.search(40)); // Output: true
-        System.out.println("Search for 90: " + tree.search(90)); // Output: false
+        // Insert another element
+        pq.remove(10);
 
-        System.out.println("\nDelete 20:");
-        tree.delete(20);
-        tree.inorder(); // Output: 30 40 50 60 70 80
+        System.out.println("Priority Queue after removing 10:");
+        pq.display();
     }
 }
 ```
