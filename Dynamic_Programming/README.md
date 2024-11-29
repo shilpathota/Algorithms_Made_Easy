@@ -61,3 +61,47 @@ public class Fibonacci {
     }
 }
 ```
+## Knapsack Problem
+### Problem
+Given weights and values of `n` items, maximize the total value within a weight limit
+### Solution
+#### 1. State
+Let `dp[i][w]` represent the maximum value for the first `i` items with weight limit `w`
+#### 2. Recurrence Relation
+```plaintext
+dp[i][w] = max(dp[i-1][w], dp[i=1][w-wt[i]] + val[i]) if w >= wt[i]
+else dp[i][w] = dp[i-1][w]
+```
+#### 3. Base Case
+```plaintext
+dp[0][w] = 0 for all `w`
+```
+#### 4. Final Answer
+`dp[n][W]` ( max value for n items and weight limit `W`)
+
+```java
+public class Knapsack {
+    public static int knapsack(int[] weights, int[] values, int capacity) {
+        int n = weights.length;
+        int[][] dp = new int[n + 1][capacity + 1];
+
+        for (int i = 1; i <= n; i++) {
+            for (int w = 0; w <= capacity; w++) {
+                if (weights[i - 1] <= w) {
+                    dp[i][w] = Math.max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1]);
+                } else {
+                    dp[i][w] = dp[i - 1][w];
+                }
+            }
+        }
+        return dp[n][capacity];
+    }
+
+    public static void main(String[] args) {
+        int[] weights = {1, 2, 3};
+        int[] values = {10, 15, 40};
+        int capacity = 5;
+        System.out.println("Maximum value: " + knapsack(weights, values, capacity));
+    }
+}
+```
