@@ -27,3 +27,37 @@ Use a bottom-up (iterative) or top-down (recursive with memoization) approach.
 
 Typically, this is the value of `dp[n]`, `dp[n][m]`, or another relevant state.
 
+
+let us apply this template to any problems to solve it.
+
+## Fibonacci Numbers
+### Problem
+Comput ethe n-th Fibonacci Number
+### Solution
+#### 1. Defining State
+   Let dp[i] represent the ith fibonacci number
+#### 2. Recurrence Relation
+  dp[i] = dp[i-1] + dp[i-2]
+#### 3. Base Case
+  dp[0] = dp[1] = 1
+#### 4. Final Answer
+  dp[n]
+```java
+public class Fibonacci {
+    public static int fibonacci(int n) {
+        if (n <= 1) return n;
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        System.out.println("Fibonacci number " + n + " is " + fibonacci(n));
+    }
+}
+```
